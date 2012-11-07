@@ -4,11 +4,22 @@
     android:layout_height="match_parent" >
 
     <TextView
+        android:id="@+id/helloWorldText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="@string/hello_world"
         tools:context=".MainActivity" />
-
+    
+    <Button
+	     android:id="@+id/startAppButton"
+	     android:layout_height="wrap_content"
+	     android:layout_width="wrap_content"
+	     android:text="@string/start_app"
+	     android:background="#33CC99"
+	     android:onClick="alertMessage" />
+   
+    
+    
 </RelativeLayout>
