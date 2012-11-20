@@ -3,6 +3,9 @@ package ohayon.android.fireworks;
 import java.util.ArrayList;
 import java.util.Random;
 
+import ohayon.mco152.fireworks.Firework;
+import ohayon.mco152.fireworks.explosions.RandomExplosion;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -35,10 +38,17 @@ public class DrawPanel extends View {
 
 		paint.setStyle(Paint.Style.FILL);
 		paint.setStrokeWidth(8);
-
-		drawPoints();
+		drawFireworks();
+		//drawPoints();
 	}
 
+	public void drawFireworks(){
+		Point point = points.get(points.size() - 1);
+		int c = colors.get(colors.size() - 1);
+		Firework f = new Firework(point.x, point.y, 20, 20, c, 5, new RandomExplosion(), null);
+		f.drawFirework(canvas, paint);
+	}
+	
 	public void drawPoints() {
 		Point point;
 		for (int i = 0; i < points.size(); i++) {

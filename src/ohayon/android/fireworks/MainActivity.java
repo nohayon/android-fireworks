@@ -2,6 +2,7 @@ package ohayon.android.fireworks;
 
 import java.util.Random;
 
+import ohayon.mco152.fireworks.FireworkComponent;
 import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.Point;
@@ -20,11 +21,15 @@ public class MainActivity extends Activity implements OnTouchListener{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // setContentView(R.layout.activity_main);
-        Log.d("OnCreateMsg", "running onCreate...");
-        draw = new DrawPanel(this);
-        draw.setOnTouchListener(this);
-        setContentView(draw);
+        FireworkComponent fc = new FireworkComponent(this);
+        InvalidateThread invalidate = new InvalidateThread(fc);
+        invalidate.start();
+        Log.d("OnCreateMsg", "running onCreate...");		
+        setContentView(fc);
+//        setContentView(R.layout.activity_main);
+//        draw = new DrawPanel(this);
+//        draw.setOnTouchListener(this);
+//        setContentView(draw);
     }
 
     @Override
@@ -43,7 +48,7 @@ public class MainActivity extends Activity implements OnTouchListener{
 	public boolean onTouch(View v, MotionEvent event) {
 		draw.points.add(new Point((int)event.getX(), (int)event.getY()) );
 		draw.colors.add(getColor());
-		v.invalidate();
+		//v.invalidate();
 		Log.d("OnTouch", "on touch was called");
 		return false;
 	} 
@@ -57,5 +62,6 @@ public class MainActivity extends Activity implements OnTouchListener{
 /*
  * canvas - draw on the screen 
  * openGL
+ * move java code into android. fix the draw calls using canvas.
  */
 }
