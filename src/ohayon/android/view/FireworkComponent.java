@@ -1,5 +1,7 @@
-package ohayon.mco152.fireworks;
+package ohayon.android.view;
 
+import ohayon.android.fireworks.Firework;
+import ohayon.android.fireworks.World;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -12,7 +14,7 @@ public class FireworkComponent extends View {
 //	private static final Logger logger = Logger
 //			.getLogger(FireworkComponent.class.getName());
 
-	public Paint paint;
+	private Paint paint;
 	private World world;
 	private Bitmap foregroundImg;
 	private Bitmap backgroundImg;
@@ -59,22 +61,6 @@ public class FireworkComponent extends View {
 		drawFireworks();
 
 		canvas.translate(0, -this.getHeight());
-//		//paintForeground(c);
-//		paint.setColor(Color.BLUE);
-//		canvas.drawRect(new Rect(0, 0, 10, 10), paint);
-//		
-//
-//		paint.setColor(Color.GREEN);
-//		canvas.drawRect(new Rect(0, this.getWidth(), 10, 10), paint);
-//		
-//
-//		paint.setColor(Color.YELLOW);
-//		canvas.drawRect(new Rect(this.getWidth(), this.getHeight(), this.getWidth()-10, this.getHeight()-10), paint);
-//	
-//
-//		paint.setColor(Color.MAGENTA);
-//		canvas.drawRect(new Rect(this.getHeight(), 0, this.getWidth()-10, this.getHeight()-10), paint);
-		
 	}
 
 	private void drawFireworks() {
@@ -90,4 +76,12 @@ public class FireworkComponent extends View {
 		}
 	}
 
+	public World getWorld() {
+		return world;
+	}
+	
+	public Canvas getCanvas() {
+		return canvas;
+	}
+	
 }

@@ -1,9 +1,9 @@
-package ohayon.mco152.fireworks.explosions;
+package ohayon.android.fireworks.explosions;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import ohayon.mco152.fireworks.Firework;
+import ohayon.android.fireworks.Firework;
 import android.graphics.Point;
 
 public class CircleExplosion implements Explosion{

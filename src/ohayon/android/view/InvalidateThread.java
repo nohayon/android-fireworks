@@ -1,6 +1,5 @@
-package ohayon.android.fireworks;
+package ohayon.android.view;
 
-import ohayon.mco152.fireworks.FireworkComponent;
 
 
 public class InvalidateThread extends Thread {

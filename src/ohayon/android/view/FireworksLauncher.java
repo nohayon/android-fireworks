@@ -1,11 +1,10 @@
-package ohayon.android.fireworks;
+package ohayon.android.view;
 
-import java.util.Random;
-
-import ohayon.mco152.fireworks.FireworkComponent;
+import ohayon.android.fireworks.Firework;
+import ohayon.android.fireworks.R;
+import ohayon.android.fireworks.explosions.RandomExplosion;
 import android.app.Activity;
 import android.graphics.Color;
-import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -14,22 +13,19 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.TextView;
 
-public class MainActivity extends Activity implements OnTouchListener{
+public class FireworksLauncher extends Activity implements OnTouchListener{
 
-	DrawPanel draw;
+	FireworkComponent fc;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FireworkComponent fc = new FireworkComponent(this);
+        Log.d("OnCreateMsg", "running onCreate...");		
+        fc = new FireworkComponent(this);
         InvalidateThread invalidate = new InvalidateThread(fc);
         invalidate.start();
-        Log.d("OnCreateMsg", "running onCreate...");		
+        fc.setOnTouchListener(this);
         setContentView(fc);
-//        setContentView(R.layout.activity_main);
-//        draw = new DrawPanel(this);
-//        draw.setOnTouchListener(this);
-//        setContentView(draw);
     }
 
     @Override
@@ -46,18 +42,14 @@ public class MainActivity extends Activity implements OnTouchListener{
 
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
-		draw.points.add(new Point((int)event.getX(), (int)event.getY()) );
-		draw.colors.add(getColor());
-		//v.invalidate();
-		Log.d("OnTouch", "on touch was called");
+		float y = fc.getHeight() - event.getY();
+		fc.getWorld().addFirework(new Firework(event.getX(), y, 60, 90, Color.RED, 0,
+				new RandomExplosion(), null));
+		Log.d("OnTouch","onTouch was called @: " + event.getX() + ":" + y);
+		v.invalidate();
 		return false;
 	} 
 
-	private int getColor() {
-		Random generator = new Random();
-		return Color.argb(255, generator.nextInt(256), generator.nextInt(256),
-							generator.nextInt(256));
-	}
 	
 /*
  * canvas - draw on the screen 

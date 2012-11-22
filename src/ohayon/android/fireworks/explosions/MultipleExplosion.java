@@ -1,9 +1,9 @@
-package ohayon.mco152.fireworks.explosions;
+package ohayon.android.fireworks.explosions;
 
 import android.graphics.Point;
 import java.util.ArrayList;
 
-import ohayon.mco152.fireworks.Firework;
+import ohayon.android.fireworks.Firework;
 
 public class MultipleExplosion implements Explosion {
 

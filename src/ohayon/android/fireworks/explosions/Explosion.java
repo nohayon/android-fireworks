@@ -1,8 +1,8 @@
-package ohayon.mco152.fireworks.explosions;
+package ohayon.android.fireworks.explosions;
 
 import java.util.ArrayList;
 
-import ohayon.mco152.fireworks.Firework;
+import ohayon.android.fireworks.Firework;
 
 public interface Explosion {
 

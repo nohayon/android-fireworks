@@ -1,4 +1,4 @@
-package ohayon.mco152.fireworks;
+package ohayon.android.fireworks;
 
 import java.util.Collections;
 import java.util.Comparator;

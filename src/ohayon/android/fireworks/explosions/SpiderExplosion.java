@@ -1,12 +1,12 @@
-package ohayon.mco152.fireworks.explosions;
+package ohayon.android.fireworks.explosions;
 
 import android.graphics.Point;
 import java.util.ArrayList;
 import java.util.Random;
 
-import ohayon.mco152.fireworks.Colors;
-import ohayon.mco152.fireworks.Firework;
-import ohayon.mco152.fireworks.Trail;
+import ohayon.android.fireworks.Colors;
+import ohayon.android.fireworks.Firework;
+import ohayon.android.fireworks.Trail;
 
 public class SpiderExplosion implements Explosion {
 	

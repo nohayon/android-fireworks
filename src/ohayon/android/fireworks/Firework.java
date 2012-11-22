@@ -1,9 +1,9 @@
-package ohayon.mco152.fireworks;
+package ohayon.android.fireworks;
 
 import java.util.ArrayList;
 
-import ohayon.mco152.fireworks.explosions.Explosion;
-import ohayon.mco152.physics.Projectile;
+import ohayon.android.fireworks.explosions.Explosion;
+import ohayon.android.physics.Projectile;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;

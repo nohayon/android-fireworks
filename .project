@@ -3,7 +3,6 @@
 	<name>Android Fireworks</name>
 	<comment></comment>
 	<projects>
-		<project>java-fireworks</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

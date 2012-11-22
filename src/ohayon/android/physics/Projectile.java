@@ -1,4 +1,4 @@
-package ohayon.mco152.physics;
+package ohayon.android.physics;
 
 import 	android.graphics.Point;
 

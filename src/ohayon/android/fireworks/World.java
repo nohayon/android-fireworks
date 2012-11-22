@@ -1,4 +1,4 @@
-package ohayon.mco152.fireworks;
+package ohayon.android.fireworks;
 
 import android.graphics.Point;
 import java.util.ArrayList;
