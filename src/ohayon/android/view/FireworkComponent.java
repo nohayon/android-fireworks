@@ -18,14 +18,16 @@ public class FireworkComponent extends View {
 	private Paint paint;
 	private World world;
 	private Canvas canvas;
-//	private Bitmap backgroundImg;
-//	private Bitmap foregroundImg;
+	private Bitmap backgroundImg;
+	private Bitmap foregroundImg;
 	
 
 	public FireworkComponent(Context context) {
 		super(context);
 		world = new World();
 		paint = new Paint(Color.BLACK);
+		backgroundImg = BitmapFactory.decodeResource(getResources(), R.drawable.background);
+		foregroundImg = BitmapFactory.decodeResource(getResources(), R.drawable.foreground);
 /*
 		try {
 			backgroundImg = ImageIO
@@ -43,13 +45,11 @@ public class FireworkComponent extends View {
 	}
 
 	public void paintBackground() {
-		canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), 
-					R.drawable.background), this.getWidth(), this.getHeight(), null);
+		canvas.drawBitmap(backgroundImg, this.getWidth(), this.getHeight(), paint);
 	}
 
 	public void paintForeground() {
-		canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), 
-					R.drawable.foreground), this.getWidth(), this.getHeight(), null);
+		canvas.drawBitmap(foregroundImg, this.getWidth(), this.getHeight(), paint);
 	}
 
 	@Override
