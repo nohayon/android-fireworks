@@ -1,10 +1,6 @@
 package ohayon.android.fireworks;
 
-import ohayon.android.fireworks.explosions.MultipleExplosion;
 import ohayon.android.fireworks.explosions.RandomExplosion;
-import ohayon.android.fireworks.explosions.SmileyFaceExplosion;
-import ohayon.android.fireworks.explosions.SpiderExplosion;
-import ohayon.android.fireworks.explosions.ThreeCircleExplosion;
 import android.graphics.Color;
 
 public class PerformanceCannon extends Cannon {

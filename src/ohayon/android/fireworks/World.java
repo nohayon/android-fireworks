@@ -7,15 +7,18 @@ import java.util.Iterator;
 public class World {
 
 	private ArrayList<Firework> fireworks;
+	private ArrayList<Firework> newFireworks;
 	private double time;
 	private long currentTime;
 	private PerformanceCannon cannon;
 
 	public World() {
 		fireworks = new ArrayList<Firework>();
+		newFireworks = new ArrayList<Firework>();
 		time = 0;
 		currentTime = -1;
 		cannon = new PerformanceCannon();
+		
 	}
 
 	public Cannon getCannon() {
@@ -37,7 +40,7 @@ public class World {
 	public void tick(double delta) {
 		Firework startFirework = cannon.getNext(time);
 
-		ArrayList<Firework> newFireworks = new ArrayList<Firework>();
+		newFireworks.clear();
 		if (startFirework != null) {
 			fireworks.add(startFirework);
 		}
@@ -55,6 +58,7 @@ public class World {
 
 			if (f.isPastTimeToLive()) {
 				iter.remove();
+				//push back on to the stack
 				if (f.hasExplosion()) {
 					newFireworks.addAll(f.getExplosion());
 				}

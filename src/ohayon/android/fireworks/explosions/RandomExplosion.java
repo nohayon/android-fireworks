@@ -18,7 +18,7 @@ public class RandomExplosion implements Explosion {
 
 		for (int i = 0; i < 65; i++) {
 			list.add(new Firework(p.x, p.y, (double) generator.nextInt(90),
-					(double) generator.nextInt(250), Colors.getColor(), generator.nextDouble()+ 2, null,
+					(double) generator.nextInt(359), Colors.getColor(), generator.nextDouble()+ 2, null,
 					null));
 		}
 
