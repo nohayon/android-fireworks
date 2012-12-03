@@ -3,8 +3,15 @@
         android:title="@string/menu_settings"
         android:orderInCategory="100" />
     
-    <item android:id="@+id/menu_chooseFW"
-        android:title="@string/menu_chooseFW"
+    <item android:id="@+id/randomFW"
+        android:title="@string/menu_chooseRandomFW"
         android:orderInCategory="200" />
+    <item android:id="@+id/spiderFW"
+        android:title="@string/menu_chooseSpiderFW"
+        android:orderInCategory="200" />
+    <item android:id="@+id/smileyFaceFW"
+        android:title="@string/menu_chooseSmileyFaceFW"
+        android:orderInCategory="200" />
+    
     
 </menu>

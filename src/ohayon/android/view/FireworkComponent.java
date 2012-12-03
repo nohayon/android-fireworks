@@ -4,10 +4,12 @@ import ohayon.android.fireworks.Firework;
 import ohayon.android.fireworks.R;
 import ohayon.android.fireworks.World;
 import android.content.Context;
-import android.graphics.BitmapFactory;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.View;
 
 public class FireworkComponent extends View {
@@ -18,51 +20,44 @@ public class FireworkComponent extends View {
 	private Paint paint;
 	private World world;
 	private Canvas canvas;
-//	private Bitmap backgroundImg;
-//	private Bitmap foregroundImg;
-	
+	private Bitmap backgroundImg;
+	private Bitmap foregroundImg;
+	private Drawable backImg;
+	private Drawable frontImg;
 
 	public FireworkComponent(Context context) {
 		super(context);
 		world = new World();
-		paint = new Paint(Color.BLACK);
-/*
-		try {
-			backgroundImg = ImageIO
-					.read(ClassLoader.class
-							.getResourceAsStream("/ohayon/mco152/fireworks/background.png"));
+		paint = new Paint(Color.CYAN);
+		backImg = getResources().getDrawable(R.drawable.background);
+		frontImg = getResources().getDrawable(R.drawable.foreground);
+//		backgroundImg = BitmapFactory.decodeResource(getResources(), R.drawable.background);
+//		foregroundImg = BitmapFactory.decodeResource(getResources(), R.drawable.foreground);
 
-			foregroundImg = ImageIO
-					.read(ClassLoader.class
-							.getResourceAsStream("/ohayon/mco152/fireworks/foreground.png"));
-
-		} catch (IOException e) {
-			logger.log(Level.INFO, e.getMessage());
-		}
-		*/
 	}
 
 	public void paintBackground() {
-		canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), 
-					R.drawable.background), this.getWidth(), this.getHeight(), null);
+		backImg.draw(canvas);
+		Log.d("paintBackground", "painting backrgound");
+		//canvas.drawBitmap(backgroundImg, this.getWidth(), this.getHeight(), paint);
 	}
 
 	public void paintForeground() {
-		canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), 
-					R.drawable.foreground), this.getWidth(), this.getHeight(), null);
+		frontImg.draw(canvas);
+		//canvas.drawBitmap(foregroundImg, this.getWidth(), this.getHeight(), paint);
 	}
 
 	@Override
 	protected void onDraw(Canvas c) {
 		this.canvas = c;
 		super.onDraw(canvas);
-		//paintBackground();
 		canvas.translate(0, this.getHeight());
+		paintBackground();
 
 		world.tick();
 		drawFireworks();
 
-		//paintForeground();
+		paintForeground();
 		canvas.translate(0, -this.getHeight());
 	}
 
@@ -86,5 +81,5 @@ public class FireworkComponent extends View {
 	public Canvas getCanvas() {
 		return canvas;
 	}
-	
+		
 }
