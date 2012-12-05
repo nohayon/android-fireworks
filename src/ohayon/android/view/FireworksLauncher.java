@@ -60,7 +60,7 @@ public class FireworksLauncher extends Activity implements OnTouchListener {
 	public boolean onTouch(View v, MotionEvent event) {
 		float y = fc.getHeight() - event.getY();
 		fc.getWorld().addFirework(
-				new Firework(event.getX(), y, 60, 90, Color.RED, 0,
+				new Firework(event.getX(), y, 60, 90, getColor(), 0,
 						getExplosionType(), null));
 		Log.d("OnTouch", "onTouch was called @: " + event.getX() + ":" + y);
 		v.invalidate();
@@ -130,4 +130,10 @@ public class FireworksLauncher extends Activity implements OnTouchListener {
 		}
 	}
 
+	private int getColor() {
+		Random random = new Random();
+		return Color.rgb(random.nextInt(), random.nextInt(), random.nextInt());
+		
+	}
+	
 }

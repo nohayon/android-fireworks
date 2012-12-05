@@ -29,7 +29,7 @@ public class FireworkComponent extends View {
 	public FireworkComponent(Context context) {
 		super(context);
 		world = new World();
-		paint = new Paint(Color.CYAN);
+		paint = new Paint(Color.BLACK);
 		
 		BitmapFactory.Options options = new BitmapFactory.Options();  
 		backgroundImg = BitmapFactory.decodeResource(getResources(), R.drawable.background, options);
