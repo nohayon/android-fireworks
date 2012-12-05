@@ -11,8 +11,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
-import android.util.Log;
 import android.view.View;
 
 public class FireworkComponent extends View {
@@ -30,24 +30,21 @@ public class FireworkComponent extends View {
 		super(context);
 		world = new World();
 		paint = new Paint(Color.CYAN);
+		
 		BitmapFactory.Options options = new BitmapFactory.Options();  
-		options.inPreferredConfig = Bitmap.Config.ARGB_8888;
 		backgroundImg = BitmapFactory.decodeResource(getResources(), R.drawable.background, options);
 		foregroundImg = BitmapFactory.decodeResource(getResources(), R.drawable.foreground, options);
-		//foregroundImg = Bitmap.createScaledBitmap(foregroundImg, this.getWidth(), this.getHeight(), true);
-		Log.d("Width and Height", "width: " + this.getWidth() + "; height: " + this.getHeight() );
+
 		setBackgroundDrawable(new BitmapDrawable(backgroundImg));
 	}
 
 	public void paintBackground() {
 		canvas.drawBitmap(backgroundImg, 0, 0, paint);
-//		setBackgroundDrawable(new BitmapDrawable(backgroundImg));
 	}
 
 	public void paintForeground() {
 	    paint.setXfermode( new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER));
-		//setBackgroundDrawable(new BitmapDrawable(foregroundImg));
-		canvas.drawBitmap(foregroundImg, 0, 0, paint);
+		canvas.drawBitmap(foregroundImg, null, new Rect(0, 0, this.getWidth(), this.getHeight()), paint);
 	}
 
 	@Override
@@ -55,7 +52,6 @@ public class FireworkComponent extends View {
 		this.canvas = c;
 		super.onDraw(canvas);
 		canvas.translate(0, this.getHeight());
-//		paintBackground();
 
 		world.tick();
 		drawFireworks();
