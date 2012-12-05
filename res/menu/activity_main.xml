@@ -1,17 +1,35 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/menu_settings"
-        android:title="@string/menu_settings"
-        android:orderInCategory="100" />
-    
-    <item android:id="@+id/randomFW"
-        android:title="@string/menu_chooseRandomFW"
-        android:orderInCategory="200" />
-    <item android:id="@+id/spiderFW"
-        android:title="@string/menu_chooseSpiderFW"
-        android:orderInCategory="200" />
-    <item android:id="@+id/smileyFaceFW"
-        android:title="@string/menu_chooseSmileyFaceFW"
-        android:orderInCategory="200" />
-    
-    
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menu_chooseFW"
+        android:orderInCategory="100"
+        android:title="@string/menu_chooseFW">
+        <menu>
+            <item
+                android:id="@+id/scatteredFW"
+                android:orderInCategory="100"
+                android:title="@string/menu_chooseScatteredFW"/>
+            <item
+                android:id="@+id/spiderFW"
+                android:orderInCategory="100"
+                android:title="@string/menu_chooseSpiderFW"/>
+            <item
+                android:id="@+id/smileyFaceFW"
+                android:orderInCategory="100"
+                android:title="@string/menu_chooseSmileyFaceFW"/>
+            <item
+                android:id="@+id/circleFW"
+                android:orderInCategory="100"
+                android:title="@string/menu_chooseCircleFW"/>
+            <item
+                android:id="@+id/threeCircleFW"
+                android:orderInCategory="100"
+                android:title="@string/menu_chooseThreeCircleFW"/>
+            <item
+                android:id="@+id/randomFW"
+                android:orderInCategory="100"
+                android:title="@string/menu_chooseRandomFW"/>
+        </menu>
+    </item>
+
 </menu>

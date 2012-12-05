@@ -5,10 +5,13 @@ import ohayon.android.fireworks.R;
 import ohayon.android.fireworks.World;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.drawable.BitmapDrawable;
 import android.util.Log;
 import android.view.View;
 
@@ -22,29 +25,29 @@ public class FireworkComponent extends View {
 	private Canvas canvas;
 	private Bitmap backgroundImg;
 	private Bitmap foregroundImg;
-	private Drawable backImg;
-	private Drawable frontImg;
 
 	public FireworkComponent(Context context) {
 		super(context);
 		world = new World();
 		paint = new Paint(Color.CYAN);
-		backImg = getResources().getDrawable(R.drawable.background);
-		frontImg = getResources().getDrawable(R.drawable.foreground);
-//		backgroundImg = BitmapFactory.decodeResource(getResources(), R.drawable.background);
-//		foregroundImg = BitmapFactory.decodeResource(getResources(), R.drawable.foreground);
-
+		BitmapFactory.Options options = new BitmapFactory.Options();  
+		options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+		backgroundImg = BitmapFactory.decodeResource(getResources(), R.drawable.background, options);
+		foregroundImg = BitmapFactory.decodeResource(getResources(), R.drawable.foreground, options);
+		//foregroundImg = Bitmap.createScaledBitmap(foregroundImg, this.getWidth(), this.getHeight(), true);
+		Log.d("Width and Height", "width: " + this.getWidth() + "; height: " + this.getHeight() );
+		setBackgroundDrawable(new BitmapDrawable(backgroundImg));
 	}
 
 	public void paintBackground() {
-		backImg.draw(canvas);
-		Log.d("paintBackground", "painting backrgound");
-		//canvas.drawBitmap(backgroundImg, this.getWidth(), this.getHeight(), paint);
+		canvas.drawBitmap(backgroundImg, 0, 0, paint);
+//		setBackgroundDrawable(new BitmapDrawable(backgroundImg));
 	}
 
 	public void paintForeground() {
-		frontImg.draw(canvas);
-		//canvas.drawBitmap(foregroundImg, this.getWidth(), this.getHeight(), paint);
+	    paint.setXfermode( new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER));
+		//setBackgroundDrawable(new BitmapDrawable(foregroundImg));
+		canvas.drawBitmap(foregroundImg, 0, 0, paint);
 	}
 
 	@Override
@@ -52,13 +55,13 @@ public class FireworkComponent extends View {
 		this.canvas = c;
 		super.onDraw(canvas);
 		canvas.translate(0, this.getHeight());
-		paintBackground();
+//		paintBackground();
 
 		world.tick();
 		drawFireworks();
 
-		paintForeground();
 		canvas.translate(0, -this.getHeight());
+		paintForeground();
 	}
 
 	private void drawFireworks() {

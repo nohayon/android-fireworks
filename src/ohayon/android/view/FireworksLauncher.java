@@ -12,6 +12,7 @@ import ohayon.android.fireworks.explosions.SmileyFaceExplosion;
 import ohayon.android.fireworks.explosions.SpiderExplosion;
 import ohayon.android.fireworks.explosions.ThreeCircleExplosion;
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +21,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.widget.Toast;
 
 public class FireworksLauncher extends Activity implements OnTouchListener {
 
@@ -67,15 +69,39 @@ public class FireworksLauncher extends Activity implements OnTouchListener {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		int duration = Toast.LENGTH_SHORT;
+		Toast toast;
+		Context context = getApplicationContext();
 		switch (item.getItemId()) {
-		case R.id.randomFW:
+		case R.id.scatteredFW:
 			setFireworkType(0);
+			toast = Toast.makeText(context, "Set to Scattered Fireworks", duration);
+			toast.show();
 			return true;
 		case R.id.spiderFW:
 			setFireworkType(1);
+			toast = Toast.makeText(context, "Set to Spider Fireworks", duration);
+			toast.show();
 			return true;
 		case R.id.smileyFaceFW:
 			setFireworkType(2);
+			toast = Toast.makeText(context, "Set to Smiley Face Fireworks", duration);
+			toast.show();
+			return true;
+		case R.id.circleFW:
+			setFireworkType(3);
+			toast = Toast.makeText(context, "Set to Circle Fireworks", duration);
+			toast.show();
+			return true;
+		case R.id.threeCircleFW:
+			setFireworkType(4);
+			toast = Toast.makeText(context, "Set to 3Circles Fireworks", duration);
+			toast.show();
+			return true;
+		case R.id.randomFW:
+			setFireworkType(-1);
+			toast = Toast.makeText(context, "Set to Random Fireworks", duration);
+			toast.show();
 			return true;
 		default:
 			return false;
