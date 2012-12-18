@@ -49,6 +49,7 @@ public class FireworkComponent extends View {
 
 	@Override
 	protected void onDraw(Canvas c) {
+		//Debug.startMethodTracing("FWonDraw");
 		this.canvas = c;
 		super.onDraw(canvas);
 		canvas.translate(0, this.getHeight());
@@ -58,6 +59,7 @@ public class FireworkComponent extends View {
 
 		canvas.translate(0, -this.getHeight());
 		paintForeground();
+		//Debug.stopMethodTracing();
 	}
 
 	private void drawFireworks() {

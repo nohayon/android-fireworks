@@ -11,6 +11,7 @@ import ohayon.android.fireworks.explosions.RandomExplosion;
 import ohayon.android.fireworks.explosions.SmileyFaceExplosion;
 import ohayon.android.fireworks.explosions.SpiderExplosion;
 import ohayon.android.fireworks.explosions.ThreeCircleExplosion;
+import ohayon.android.show.RecordedShow;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
@@ -25,20 +26,27 @@ import android.widget.Toast;
 
 public class FireworksLauncher extends Activity implements OnTouchListener {
 
-	FireworkComponent fc;
+	private FireworkComponent fc;
 	int fireworkType = -1;
 	private ArrayList<Class<? extends Explosion>> explosionTypes;
+	private Random random;
+	private RecordedShow recording;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		random = new Random();
 		Log.d("OnCreateMsg", "running onCreate...");
 		fc = new FireworkComponent(this);
 		InvalidateThread invalidate = new InvalidateThread(fc);
 		invalidate.start();
+		
+		recording = new RecordedShow(fc.getWorld());
+
 		fc.setOnTouchListener(this);
-		setContentView(fc);
 		createExplosionList();
+
+		setContentView(fc);
 	}
 
 	private void createExplosionList() {
@@ -58,12 +66,18 @@ public class FireworksLauncher extends Activity implements OnTouchListener {
 
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
+//		Debug.startMethodTracing("FWonTouch");
 		float y = fc.getHeight() - event.getY();
+		Explosion xplsn = getExplosionType();
+		int color = getColor();
 		fc.getWorld().addFirework(
-				new Firework(event.getX(), y, 60, 90, getColor(), 0,
-						getExplosionType(), null));
-		Log.d("OnTouch", "onTouch was called @: " + event.getX() + ":" + y);
+				new Firework(event.getX(), y, 60, 90, color, 0,
+						xplsn, null));
+		if (recording.isRecording()) {
+			recording.addFirework(event.getX(), y, xplsn, color);
+		}
 		v.invalidate();
+//		Debug.stopMethodTracing();
 		return false;
 	}
 
@@ -73,6 +87,21 @@ public class FireworksLauncher extends Activity implements OnTouchListener {
 		Toast toast;
 		Context context = getApplicationContext();
 		switch (item.getItemId()) {
+		case R.id.menu_startRecording:
+			recording.startRecording();
+			toast = Toast.makeText(context, "Recording", duration);
+			toast.show();
+			return true;
+		case R.id.menu_stopRecording:
+			recording.stopRecording();
+			toast = Toast.makeText(context, "Stopped recording", duration);
+			toast.show();
+			return true;
+		case R.id.menu_startShow:
+			recording.startShow();
+			toast = Toast.makeText(context, "Playing back most recent recording", duration);
+			toast.show();
+			return true;
 		case R.id.scatteredFW:
 			setFireworkType(0);
 			toast = Toast.makeText(context, "Set to Scattered Fireworks", duration);
@@ -131,9 +160,14 @@ public class FireworksLauncher extends Activity implements OnTouchListener {
 	}
 
 	private int getColor() {
-		Random random = new Random();
 		return Color.rgb(random.nextInt(), random.nextInt(), random.nextInt());
 		
 	}
+	
+	/*
+	 * traceView - cant get the files from my phone
+	 * profiler in java
+	 * then maybe openGL
+	 * */
 	
 }
