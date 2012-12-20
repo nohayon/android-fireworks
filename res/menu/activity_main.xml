@@ -3,15 +3,15 @@
     <item
         android:id="@+id/menu_startRecording"
         android:orderInCategory="100"
-        android:title="@string/menu_startRecording">    
+        android:title="@string/menu_startRecording"/>    
     <item
         android:id="@+id/menu_stopRecording"
         android:orderInCategory="100"
-        android:title="@string/menu_stopRecording">
+        android:title="@string/menu_stopRecording"/>
  	<item
         android:id="@+id/menu_startShow"
         android:orderInCategory="100"
-        android:title="@string/menu_startShow">
+        android:title="@string/menu_startShow"/>
     <item
         android:id="@+id/menu_chooseFW"
         android:orderInCategory="100"
