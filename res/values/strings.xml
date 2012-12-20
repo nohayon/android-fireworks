@@ -9,5 +9,8 @@
     <string name="menu_chooseRandomFW">Random FW</string>
     <string name="menu_chooseCircleFW">Circle FW</string>
     <string name="menu_chooseThreeCircleFW">Three Circle FW</string>
+    <string name="menu_startRecording">Start Recording</string>
+    <string name="menu_stopRecording">Stop Recording</string>
+    <string name="menu_startShow">Play back most recent recorded show</string>
 
 </resources>
