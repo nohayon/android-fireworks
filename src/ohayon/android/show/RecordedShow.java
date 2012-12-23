@@ -86,7 +86,7 @@ public class RecordedShow {
 		} else {
 			SavedShow savedShow = new SavedShow();
 			ArrayList<FireworkAndTime> fireworks = savedShow.getSavedShow(context);
-			if (fireworks.isEmpty()){
+			if (fireworks == null){
 				return "Cannot start saved show";
 			}
 			startShow(fireworks);

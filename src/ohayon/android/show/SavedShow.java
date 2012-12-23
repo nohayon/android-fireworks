@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import ohayon.android.fireworks.FireworkAndTime;
@@ -62,7 +61,7 @@ public class SavedShow {
 			Log.e("IOEXception SavedShow.java", e.getMessage());
 		}
 		
-		gson.fromJson(gsonStr,(Type) new ArrayList<Class<? extends FireworkAndTime>>());
+		fats = gson.fromJson(gsonStr, ArrayList.class);
 		return fats;
 	}
 }
