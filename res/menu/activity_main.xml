@@ -12,6 +12,14 @@
         android:id="@+id/menu_startShow"
         android:orderInCategory="100"
         android:title="@string/menu_startShow"/>
+ 	<item
+ 	    android:id="@+id/menu_saveShow"
+ 	    android:orderInCategory="100"
+ 	    android:title="@string/menu_saveShow"/>
+ 	<item
+ 	    android:id="@+id/menu_startSavedShow"
+ 	    android:orderInCategory="100"
+ 	    android:title="@string/menu_startSavedShow"/>
     <item
         android:id="@+id/menu_chooseFW"
         android:orderInCategory="100"

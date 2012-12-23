@@ -6,6 +6,7 @@ import ohayon.android.fireworks.Firework;
 import ohayon.android.fireworks.FireworkAndTime;
 import ohayon.android.fireworks.World;
 import ohayon.android.fireworks.explosions.Explosion;
+import android.content.Context;
 import android.util.Log;
 
 public class RecordedShow {
@@ -57,5 +58,41 @@ public class RecordedShow {
 			fats.clear();
 		}
 	}
+	
+	private void startShow(ArrayList<FireworkAndTime> fireworks) {
+		fats.clear();
+		fats.addAll(fireworks);
+		startShow();
+	}
+
+	public String saveShow(Context context) {
+		if(isRecording) {
+			return "In middle of recording. Cannot save show";
+		} else {
+			if (fats.isEmpty()) {
+				return "Nothing has been recorded. Cannot save show";
+			} else {
+				SavedShow savedShow = new SavedShow();
+				savedShow.addFireworks(fats);
+				savedShow.saveShow(context);
+				return "Saved Show Successfully";
+			}
+		}
+	}
+
+	public String startSavedShow(Context context) {
+		if(isRecording) {
+			return "In middle of recording. Cannot save show";
+		} else {
+			SavedShow savedShow = new SavedShow();
+			ArrayList<FireworkAndTime> fireworks = savedShow.getSavedShow(context);
+			if (fireworks.isEmpty()){
+				return "Cannot start saved show";
+			}
+			startShow(fireworks);
+			return "Starting Saved Show";
+		}
+	}
+
 	
 }

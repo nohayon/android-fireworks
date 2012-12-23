@@ -12,5 +12,7 @@
     <string name="menu_startRecording">Start Recording</string>
     <string name="menu_stopRecording">Stop Recording</string>
     <string name="menu_startShow">Play back most recent recorded show</string>
-
+    <string name="menu_startSavedShow">Play back most recent saved show</string>
+    <string name="menu_saveShow">Save most Recent show</string>
+    
 </resources>

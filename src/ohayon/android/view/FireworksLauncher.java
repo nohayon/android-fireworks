@@ -132,6 +132,16 @@ public class FireworksLauncher extends Activity implements OnTouchListener {
 			toast = Toast.makeText(context, "Set to Random Fireworks", duration);
 			toast.show();
 			return true;
+		case R.id.menu_saveShow:
+			String toastText = recording.saveShow(getApplicationContext());
+			toast = Toast.makeText(context, toastText, duration);
+			toast.show();
+			return true;
+		case R.id.menu_startSavedShow:
+			toastText = recording.startSavedShow(getApplicationContext());
+			toast = Toast.makeText(context, toastText, duration);
+			toast.show();
+			return true;
 		default:
 			return false;
 		}
