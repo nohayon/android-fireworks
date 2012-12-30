@@ -1,6 +1,7 @@
 package ohayon.android.show;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -9,10 +10,15 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import ohayon.android.fireworks.FireworkAndTime;
+import ohayon.android.fireworks.explosions.CircleExplosion;
 import android.content.Context;
+import android.os.Environment;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParser;
+import com.google.gson.TypeAdapter;
 
 public class SavedShow {
 
@@ -30,9 +36,11 @@ public class SavedShow {
 
 	public void saveShow(Context context) {
 		String gsonStr = gson.toJson(fireworks);
+		Log.d("gsonStr", gsonStr);
 		FileOutputStream outStream;
 		try {
-			outStream = context.openFileOutput("savedShow.NOFW", Context.MODE_PRIVATE);
+			File sdcard = new File(Environment.getExternalStorageDirectory(), "savedShow.txt");
+			outStream = new FileOutputStream(sdcard);
 			outStream.write(gsonStr.getBytes());
 			outStream.flush();
 			outStream.close();
@@ -42,10 +50,9 @@ public class SavedShow {
 	}
 	
 	public ArrayList<FireworkAndTime> getSavedShow(Context context){
-		ArrayList<FireworkAndTime> fats = new ArrayList<FireworkAndTime>();
 		String gsonStr = null;
 		try {
-			FileInputStream inStream = context.openFileInput("savedShow.NOFW");
+			FileInputStream inStream = new FileInputStream(new File(Environment.getExternalStorageDirectory(), "savedShow.txt"));
 			InputStreamReader inputReader = new InputStreamReader(inStream);
 			BufferedReader buffer = new BufferedReader(inputReader);
 			StringBuilder strBuilder = new StringBuilder();
@@ -55,13 +62,19 @@ public class SavedShow {
 			}
 			
 			inStream.close();
+					
+			JsonParser parser = new JsonParser();
+		    JsonArray array = parser.parse(strBuilder.toString()).getAsJsonArray();
+		    for ( int i = 0; i < array.size(); i++ ) {
+		    	fireworks.add( gson.fromJson(array.get(i), FireworkAndTime.class) );
+		    }
+		    return fireworks;
 		} catch (FileNotFoundException e) {
 			Log.e("FileNotFoundEception SavedShow.java", e.getMessage());
 		} catch (IOException e) {
 			Log.e("IOEXception SavedShow.java", e.getMessage());
 		}
-		
-		fats = gson.fromJson(gsonStr, ArrayList.class);
-		return fats;
+		return fireworks;		
 	}
+
 }
