@@ -67,6 +67,10 @@ public class SavedShow {
 		    JsonArray array = parser.parse(strBuilder.toString()).getAsJsonArray();
 		    for ( int i = 0; i < array.size(); i++ ) {
 		    	fireworks.add( gson.fromJson(array.get(i), FireworkAndTime.class) );
+		    	/*
+		    	* Problem: Explosion is a interface, and it does not have a no-args constructor
+		    	* 	but this needs to create the explosion types...
+		    	*/
 		    }
 		    return fireworks;
 		} catch (FileNotFoundException e) {
