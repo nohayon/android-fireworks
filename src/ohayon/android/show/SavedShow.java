@@ -71,6 +71,10 @@ public class SavedShow {
 		    	 *  a constructor to an interface. what to do...? 
 		    	 */
 		    	fireworks.add( gson.fromJson(array.get(i), FireworkAndTime.class) );
+		    	/*
+		    	* Problem: Explosion is a interface, and it does not have a no-args constructor
+		    	* 	but this needs to create the explosion types...
+		    	*/
 		    }
 		    return fireworks;
 		} catch (FileNotFoundException e) {
