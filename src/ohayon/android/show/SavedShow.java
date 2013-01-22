@@ -10,7 +10,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import ohayon.android.fireworks.FireworkAndTime;
-import ohayon.android.fireworks.explosions.CircleExplosion;
 import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
@@ -18,7 +17,6 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
-import com.google.gson.TypeAdapter;
 
 public class SavedShow {
 
@@ -66,6 +64,12 @@ public class SavedShow {
 			JsonParser parser = new JsonParser();
 		    JsonArray array = parser.parse(strBuilder.toString()).getAsJsonArray();
 		    for ( int i = 0; i < array.size(); i++ ) {
+		    	// Explosion xplsn = gson.fromJson( array.get(i).get(0), Explosion.class );
+		    	/*
+		    	 *  problem: firework has an explosion in it which is an interface.
+		    	 *  cant create an explosion with a no-args constructor, since its an interface, cant add
+		    	 *  a constructor to an interface. what to do...? 
+		    	 */
 		    	fireworks.add( gson.fromJson(array.get(i), FireworkAndTime.class) );
 		    }
 		    return fireworks;
