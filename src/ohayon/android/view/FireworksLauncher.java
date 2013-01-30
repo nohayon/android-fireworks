@@ -84,63 +84,51 @@ public class FireworksLauncher extends Activity implements OnTouchListener {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int duration = Toast.LENGTH_SHORT;
-		Toast toast;
 		Context context = getApplicationContext();
 		switch (item.getItemId()) {
 		case R.id.menu_startRecording:
 			recording.startRecording();
-			toast = Toast.makeText(context, "Recording", duration);
-			toast.show();
+			Toast.makeText(context, "Recording", duration).show();
 			return true;
 		case R.id.menu_stopRecording:
 			recording.stopRecording();
-			toast = Toast.makeText(context, "Stopped recording", duration);
-			toast.show();
+			Toast.makeText(context, "Stopped recording", duration).show();
 			return true;
 		case R.id.menu_startShow:
 			recording.startShow();
-			toast = Toast.makeText(context, "Playing back most recent recording", duration);
-			toast.show();
+			Toast.makeText(context, "Playing back most recent recording", duration).show();
 			return true;
 		case R.id.scatteredFW:
 			setFireworkType(0);
-			toast = Toast.makeText(context, "Set to Scattered Fireworks", duration);
-			toast.show();
+			Toast.makeText(context, "Set to Scattered Fireworks", duration).show();
 			return true;
 		case R.id.spiderFW:
 			setFireworkType(1);
-			toast = Toast.makeText(context, "Set to Spider Fireworks", duration);
-			toast.show();
+			Toast.makeText(context, "Set to Spider Fireworks", duration).show();
 			return true;
 		case R.id.smileyFaceFW:
 			setFireworkType(2);
-			toast = Toast.makeText(context, "Set to Smiley Face Fireworks", duration);
-			toast.show();
+			Toast.makeText(context, "Set to Smiley Face Fireworks", duration).show();
 			return true;
 		case R.id.circleFW:
 			setFireworkType(3);
-			toast = Toast.makeText(context, "Set to Circle Fireworks", duration);
-			toast.show();
+			Toast.makeText(context, "Set to Circle Fireworks", duration).show();
 			return true;
 		case R.id.threeCircleFW:
 			setFireworkType(4);
-			toast = Toast.makeText(context, "Set to 3Circles Fireworks", duration);
-			toast.show();
+			Toast.makeText(context, "Set to 3Circles Fireworks", duration).show();
 			return true;
 		case R.id.randomFW:
 			setFireworkType(-1);
-			toast = Toast.makeText(context, "Set to Random Fireworks", duration);
-			toast.show();
+			Toast.makeText(context, "Set to Random Fireworks", duration).show();
 			return true;
 		case R.id.menu_saveShow:
 			String toastText = recording.saveShow(getApplicationContext());
-			toast = Toast.makeText(context, toastText, duration);
-			toast.show();
+			Toast.makeText(context, toastText, duration).show();
 			return true;
 		case R.id.menu_startSavedShow:
 			toastText = recording.startSavedShow(getApplicationContext());
-			toast = Toast.makeText(context, toastText, duration);
-			toast.show();
+			Toast.makeText(context, toastText, duration).show();
 			return true;
 		default:
 			return false;

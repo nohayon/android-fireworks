@@ -9,6 +9,8 @@ import ohayon.android.fireworks.Firework;
 
 public class ThreeCircleExplosion implements Explosion {
 
+	private static final long serialVersionUID = 4373323008408893605L;
+
 	private Random generator = new Random();
 
 	@Override

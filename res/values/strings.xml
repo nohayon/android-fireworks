@@ -11,8 +11,10 @@
     <string name="menu_chooseThreeCircleFW">Three Circle FW</string>
     <string name="menu_startRecording">Start Recording</string>
     <string name="menu_stopRecording">Stop Recording</string>
-    <string name="menu_startShow">Play back most recent recorded show</string>
-    <string name="menu_startSavedShow">Play back most recent saved show</string>
-    <string name="menu_saveShow">Save most Recent show</string>
+    <string name="menu_startShow">Play Recorded Show</string>
+    <string name="menu_startSavedShow">Play Saved Show</string>
+    <string name="menu_saveShow">Save Show</string>
+    <string name="menu_changeBkgrd">Change Background Image</string>
+    <string name="menu_eifelTowers">Eifel Towers</string>
     
 </resources>

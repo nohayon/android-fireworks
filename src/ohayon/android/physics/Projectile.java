@@ -1,8 +1,12 @@
 package ohayon.android.physics;
 
+import java.io.Serializable;
+
 import 	android.graphics.Point;
 
-public class Projectile {
+public class Projectile implements Serializable{
+	private static final long serialVersionUID = 3992064043885285041L;
+
 	private double Xi, Yi, V, theta, time;
 
 	public Projectile(double Xi, double Yi, double V, double theta) {

@@ -9,8 +9,10 @@ import android.graphics.Point;
 
 public class SpiderExplosion implements Explosion {
 	
-	//private Random generator = new Random();
+	private static final long serialVersionUID = 4891254427504810123L;
 
+	//private Random generator = new Random();
+	
 	@Override
 	public ArrayList<Firework> explode(Firework f) {
 		ArrayList<Firework> list = new ArrayList<Firework>();

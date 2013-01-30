@@ -1,7 +1,11 @@
 package ohayon.android.fireworks;
 
-public class FireworkAndTime {
+import java.io.Serializable;
+
+public class FireworkAndTime implements Serializable{
 	
+	private static final long serialVersionUID = 4584945476482916423L;
+
 	private Firework firework;
 	private double time;
 	

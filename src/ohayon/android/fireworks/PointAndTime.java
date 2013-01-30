@@ -1,9 +1,13 @@
 package ohayon.android.fireworks;
 
+import java.io.Serializable;
+
 import android.graphics.Point;
 
-public class PointAndTime {
-	
+public class PointAndTime implements Serializable {
+
+	private static final long serialVersionUID = 585287230828819925L;
+
 	private Point point;
 	private double time;
 	

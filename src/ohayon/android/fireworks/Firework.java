@@ -1,5 +1,6 @@
 package ohayon.android.fireworks;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import ohayon.android.fireworks.explosions.Explosion;
@@ -10,7 +11,9 @@ import android.graphics.Paint.Style;
 import android.graphics.Point;
 //import java.awt.Graphics;
 
-public class Firework extends Projectile {
+public class Firework extends Projectile implements Serializable {
+
+	private static final long serialVersionUID = -2530561254107826465L;
 
 	private int color;
 	private double ttl;
@@ -25,7 +28,7 @@ public class Firework extends Projectile {
 		this.explosion = explosion;
 		this.trail = trail;
 	}
-
+	
 	public double getTtl() {
 		return this.ttl;
 	}

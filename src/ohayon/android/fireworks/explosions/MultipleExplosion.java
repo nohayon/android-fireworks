@@ -7,6 +7,8 @@ import ohayon.android.fireworks.Firework;
 
 public class MultipleExplosion implements Explosion {
 
+	private static final long serialVersionUID = -286186103625648056L;
+
 	@Override
 	public ArrayList<Firework> explode(Firework f) {
 		ArrayList<Firework> list = new ArrayList<Firework>();

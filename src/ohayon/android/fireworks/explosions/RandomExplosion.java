@@ -10,6 +10,8 @@ import ohayon.android.fireworks.Firework;
 
 public class RandomExplosion implements Explosion {
 
+	private static final long serialVersionUID = -1898321283326190984L;
+	
 	@Override
 	public ArrayList<Firework> explode(Firework f) {
 		Random generator = new Random();

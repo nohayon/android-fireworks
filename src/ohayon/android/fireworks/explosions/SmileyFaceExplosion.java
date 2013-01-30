@@ -8,6 +8,8 @@ import android.graphics.Point;
 
 public class SmileyFaceExplosion implements Explosion {
 
+	private static final long serialVersionUID = -4270306412730446700L;
+	
 	@Override
 	public ArrayList<Firework> explode(Firework f) {
 		ArrayList<Firework> list = new ArrayList<Firework>();

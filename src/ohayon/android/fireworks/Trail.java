@@ -1,5 +1,6 @@
 package ohayon.android.fireworks;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -7,7 +8,9 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
 
-public class Trail {
+public class Trail implements Serializable {
+
+	private static final long serialVersionUID = -3998907548260451105L;
 
 //	private static final Logger logger = Logger
 //			.getLogger(World.class.getName());
