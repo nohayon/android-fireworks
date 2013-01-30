@@ -162,10 +162,4 @@ public class FireworksLauncher extends Activity implements OnTouchListener {
 		
 	}
 	
-	/*
-	 * traceView - cant get the files from my phone
-	 * profiler in java
-	 * then maybe openGL
-	 * */
-	
 }
